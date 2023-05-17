@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pickup Line Generator</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-image: linear-gradient(to bottom, #667eea, #764ba2);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .container {
+      width: 400px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+    }
+    
+    h1 {
+      color: #333333;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    #pickupLine {
+      font-size: 24px;
+      color: #555555;
+      margin-bottom: 30px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pickup Line Generator</h1>
+    <p id="pickupLine"></p>
+    <button onclick="generatePickupLine()">Generate New Pickup Line</button>
+  </div>
+
+  <script>
+var pickupLines = [
+"Are you a magician? Because whenever I look at you, everyone else disappears.",
+"Is your name Google? Because you have everything I've been searching for.",
+"Do you believe in love at first sight or should I walk by again?",
+"Excuse me, but I think you dropped something: my jaw.",
+"Is your dad a baker? Because you're a cutie pie!",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Do you have a map? I keep getting lost in your eyes.",
+"Is your name Ariel? Because we mermaid for each other.",
+"Are you a magician? Because every time I look at you, everyone else disappears.",
+"Do you have a Band-Aid? I just scraped my knee falling for you.",
+"Are you a camera? Because every time I look at you, I smile.",
+"Is your dad a boxer? Because you're a knockout!",
+"If you were a vegetable, you'd be a cute-cumber.",
+"Do you have a name or can I call you mine?",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Are you a parking ticket? Because you've got 'Fine' written all over you.",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Do you believe in fate? Because I think we were meant to meet.",
+"Do you have a Band-Aid? I just scraped my knee falling for you.",
+"Is your name Google? Because you've got everything I'm searching for.",
+"Are you a magician? Because every time I look at you, everyone else disappears.",
+"Can I follow you home? Cause my parents always told me to follow my dreams.",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Do you believe in love at first sight, or should I walk by again?",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Excuse me, but I think you dropped something: my jaw.",
+"Is your dad a baker? Because you're a cutie pie!",
+"Can I take you out for dinner, or do you prefer money?",
+"Is your dad a thief? Because he must have stolen the stars and put them in your eyes.",
+"Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+"Do you have a name or can I call you mine?",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Is your dad a boxer? Because you're a knockout!",
+"Is your name Google? Because you have everything I'm searching for.",
+"If looks could kill, you'd definitely be a weapon of mass seduction.",
+"Can I take a picture of you to prove to all my friends that angels do exist?",
+"Do you have a name, or can I call you mine?",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your dad a magician? Because whenever I look at you, everyone else disappears.",
+"Is your name Google? Because you have everything I've been searching for.",
+"I must be a snowflake because I've fallen for you.",
+"Is there a rainbow today? I just found the treasure I've been searching for!",
+"Do you have a name or can I call you mine?",
+"Do you have a Band-Aid? I just scraped my knee falling for you.",
+"Do you have a map? I keep getting lost in your eyes.",
+"Is your dad an artist? Because you're a masterpiece.",
+"Is your dad a boxer? Because you're a knockout!",
+"Is your dad a baker? Because you're a cutie pie!",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Excuse me, but I think you dropped something: my jaw.",
+"Do you believe in love at first sight or should I walk by again?",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+"Is your name Google? Because you have everything I'm searching for.",
+"Are you a magician? Because every time I look at you, everyone else disappears.",
+"Can I follow you home? Cause my parents always told me to follow my dreams.",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Do you believe in love at first sight, or should I walk by again?",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Excuse me, but I think you dropped something: my jaw.",
+"Is your dad a baker? Because you're a cutie pie!",
+"Can I take you out for dinner, or do you prefer money?",
+"Is your dad a thief? Because he must have stolen the stars and put them in your eyes.",
+"Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+"Do you have a name or can I call you mine?",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Is your dad a boxer? Because you're a knockout!",
+"Is your name Google? Because you have everything I'm searching for.",
+"If looks could kill, you'd definitely be a weapon of mass seduction.",
+"Can I take a picture of you to prove to all my friends that angels do exist?",
+"Do you have a name, or can I call you mine?",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your dad a magician? Because whenever I look at you, everyone else disappears.",
+"Is your name Google? Because you have everything I've been searching for.",
+"I must be a snowflake because I've fallen for you.",
+"Is there a rainbow today? I just found the treasure I've been searching for!",
+"Do you have a name or can I call you mine?",
+"Do you have a Band-Aid? I just scraped my knee falling for you.",
+"Do you have a map? I keep getting lost in your eyes.",
+"Is your dad an artist? Because you're a masterpiece.",
+"Is your dad a boxer? Because you're a knockout!",
+"Is your dad a baker? Because you're a cutie pie!",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Excuse me, but I think you dropped something: my jaw.",
+"Do you believe in love at first sight or should I walk by again?",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+"Is your name Google? Because you have everything I'm searching for.",
+"Are you a magician? Because every time I look at you, everyone else disappears.",
+"Can I follow you home? Cause my parents always told me to follow my dreams.",
+"If you were a vegetable, you'd be a 'cute-cumber.'",
+"Do you believe in love at first sight, or should I walk by again?",
+"Is your name Wi-Fi? Because I'm really feeling a connection.",
+"Excuse me, but I think you dropped something: my jaw.",
+"Is your dad a baker? Because you're a cutie pie!",
+"Can I take you out for dinner, or do you prefer money?",
+"Is your dad a thief? Because he must have stolen the stars and put them in your eyes.",
+"Do you have a Band-Aid? Because I just scraped my knee falling for you.",
+"Do you have a name or can I call you mine?",
+"Is your dad a photographer? Because you're a picture-perfect beauty.",
+"Is your dad a boxer? Because you're a knockout!",
+"Is your name Google? Because you have everything I'm searching for.",
+"If looks could kill, you'd definitely be a weapon of mass seduction.",
+"Can I take a picture of you to prove to all my friends that angels do exist?"
+
+    ];
+
+    function generatePickupLine() {
+      var randomIndex = Math.floor(Math.random() * pickupLines.length);
+      var pickupLineElement = document.getElementById("pickupLine");
+      pickupLineElement.textContent = pickupLines[randomIndex];
+    }
+  </script>
+</body>
+</html>
